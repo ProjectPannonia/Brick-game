@@ -15,24 +15,32 @@ let keycode = {
 }
 let rectangle = {
     vertical: parseInt(getVerticalPos()),
-    horizontal: parseInt(getHorizontalPos())
+    horizontal: parseInt(getHorizontalPos()),
+    moveRight: function () {
+        if(this.horizontal < 1690) {
+            this.horizontal += 20;
+        }
+    },
+    moveLeft: function () {
+        if(this.horizontal > 0) {
+            this.horizontal -= 20;
+        }
+    },
+    moveUp: function () {
+        if (this.vertical > 0) {
+            this.vertical -= 20;
+        }
+    },
+    moveDown: function () {
+        if(this.vertical < 840) {
+            this.vertical += 20;
+        }
+    }
 }
+
 let maxVertical = 840;
 console.log("Horizontal position: " + rectangle.horizontal);
 console.log("Vertical position: " + rectangle.vertical);
-
-let moveRight = function () {
-    rectangle.horizontal += 20;
-};
-let moveLeft = function () {
-    rectangle.horizontal -= 20;
-};
-let moveUp = function () {
-    rectangle.vertical -= 20;
-};
-let moveDown = function () {
-    rectangle.vertical += 20;
-};
 
 
 document.addEventListener('keypress', function (event) {
@@ -41,19 +49,23 @@ document.addEventListener('keypress', function (event) {
     console.log(event.key);
     if(key === keycode.upArrow){
         console.log("UP");
-        moveUp();
+        rectangle.moveUp();
+
         document.getElementById("green").style.marginTop = `${rectangle.vertical}px`;
     } else if(key === keycode.downArrow){
         console.log("DOWN");
-        moveDown();
+
+        rectangle.moveDown();
         document.getElementById("green").style.marginTop = `${rectangle.vertical}px`;
     } else if(key === keycode.leftArrow) {
         console.log('LEFT');
-        moveLeft();
+
+        rectangle.moveLeft();
         document.getElementById("green").style.marginLeft = `${rectangle.horizontal}px`;
     } else if(key === keycode.rightArrow) {
         console.log('RIGHT');
-        moveRight();
+
+        rectangle.moveRight();
         document.getElementById("green").style.marginLeft = `${rectangle.horizontal}px`;
     } else if(event.key === 'Enter') {
         console.log('Throw');
