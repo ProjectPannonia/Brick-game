@@ -17,6 +17,7 @@ let rectangle = {
     vertical: parseInt(getVerticalPos()),
     horizontal: parseInt(getHorizontalPos())
 }
+let maxVertical = 840;
 console.log("Horizontal position: " + rectangle.horizontal);
 console.log("Vertical position: " + rectangle.vertical);
 
@@ -37,7 +38,7 @@ let moveDown = function () {
 document.addEventListener('keypress', function (event) {
 
     let key = event.key;
-
+    console.log(event.key);
     if(key === keycode.upArrow){
         console.log("UP");
         moveUp();
@@ -54,5 +55,8 @@ document.addEventListener('keypress', function (event) {
         console.log('RIGHT');
         moveRight();
         document.getElementById("green").style.marginLeft = `${rectangle.horizontal}px`;
+    } else if(event.key === 'Enter') {
+        console.log('Throw');
+        document.getElementById("green").style.marginTop = `${maxVertical}px`;
     }
 });
