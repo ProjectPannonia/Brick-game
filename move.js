@@ -57,6 +57,7 @@ document.addEventListener('keypress', function (event) {
         document.getElementById("green").style.marginLeft = `${rectangle.horizontal}px`;
     } else if(event.key === 'Enter') {
         console.log('Throw');
-        document.getElementById("green").style.marginTop = `${maxVertical}px`;
+        rectangle.vertical = maxVertical;
+        document.getElementById("green").style.marginTop = `${rectangle.vertical}px`;
     }
 });
